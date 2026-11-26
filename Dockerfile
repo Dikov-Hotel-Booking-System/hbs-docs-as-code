@@ -6,8 +6,9 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
-RUN npm install --global "$(node -p 'require("./package.json").packageManager')" \
-    && pnpm install --frozen-lockfile
+RUN npm install --global "$(node -p 'require("./package.json").packageManager')"
+RUN --mount=type=cache,target=/pnpm/store \
+    pnpm install --frozen-lockfile --store-dir /pnpm/store --config.fetch-retries=4 --config.fetch-timeout=90000
 
 COPY docusaurus.config.mjs projects.mjs sidebars.mjs ./
 COPY scripts/ scripts/
