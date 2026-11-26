@@ -7,8 +7,8 @@ RUN apt-get update \
 
 COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
 RUN npm install --global "$(node -p 'require("./package.json").packageManager')"
-RUN --mount=type=cache,target=/pnpm/store \
-    pnpm install --frozen-lockfile --store-dir /pnpm/store --config.fetch-retries=4 --config.fetch-timeout=90000
+RUN --mount=type=cache,id=hbs-docs-pnpm,target=/root/.local/share/pnpm/store,sharing=locked \
+    pnpm install --frozen-lockfile --config.package-import-method=copy
 
 COPY docusaurus.config.mjs projects.mjs sidebars.mjs ./
 COPY scripts/ scripts/
