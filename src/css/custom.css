@@ -1,0 +1,101 @@
+:root {
+  --ifm-color-primary: #176359;
+  --ifm-color-primary-dark: #14594f;
+  --ifm-color-primary-darker: #13544b;
+  --ifm-color-primary-darkest: #10453e;
+  --ifm-color-primary-light: #196d63;
+  --ifm-color-primary-lighter: #1b7267;
+  --ifm-color-primary-lightest: #1e8174;
+  --ifm-heading-font-weight: 700;
+  --ifm-navbar-shadow: none;
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #83d6c5;
+  --ifm-color-primary-dark: #66cdb7;
+  --ifm-color-primary-darker: #58c8b0;
+  --ifm-color-primary-darkest: #38b298;
+  --ifm-color-primary-light: #a0dfd3;
+  --ifm-color-primary-lighter: #aee4da;
+  --ifm-color-primary-lightest: #d9f2ed;
+}
+
+.navbar {
+  border-bottom: 1px solid var(--ifm-toc-border-color);
+}
+
+.docs-home__container {
+  width: min(70rem, 100% - 2.5rem);
+  margin-inline: auto;
+}
+
+.docs-home__intro {
+  padding-block: clamp(3.5rem, 9vw, 7rem);
+  background:
+    radial-gradient(ellipse at 85% 5%, #25584f 0, transparent 55%),
+    linear-gradient(150deg, #101c2b, #152a33);
+  color: #fff;
+}
+
+.docs-home__intro h1 {
+  font-size: clamp(2rem, 6vw, 4.5rem);
+  letter-spacing: -.055em;
+  line-height: 1.05;
+}
+
+.docs-home__intro p {
+  max-width: 38rem;
+  margin: 1.25rem 0 0;
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: #d4e4e7;
+}
+
+.docs-home__services {
+  padding-block: 2.75rem 4rem;
+}
+
+.docs-home__services h2 {
+  margin-bottom: 1.25rem;
+}
+
+.docs-home__service-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.docs-home__service {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  padding: 1.5rem;
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: .75rem;
+  color: var(--ifm-font-color-base);
+}
+
+.docs-home__service:hover,
+.docs-home__service:focus-visible {
+  color: var(--ifm-font-color-base);
+  border-color: var(--ifm-color-primary);
+  text-decoration: none;
+}
+
+.docs-home__service h3 {
+  margin-bottom: .5rem;
+  color: var(--ifm-color-primary);
+}
+
+.docs-home__service p {
+  margin-bottom: 1rem;
+}
+
+.docs-home__repository {
+  margin-top: auto;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: .875rem;
+  color: var(--ifm-color-emphasis-700);
+}

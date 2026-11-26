@@ -1,0 +1,6 @@
+/node_modules/
+/.docusaurus/
+/.generated-docs/
+/.docs-sync-*/
+/build/
+*.log
