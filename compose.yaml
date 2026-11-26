@@ -1,0 +1,17 @@
+name: hbs-docs-as-code
+
+services:
+  docs:
+    image: hbs-docs-as-code:local
+    build:
+      context: .
+      target: local
+      args:
+        HBS_DOCS_BUILD_ID: ${HBS_DOCS_BUILD_ID:-local}
+    ports:
+      - '127.0.0.1:8081:8080'
+    healthcheck:
+      test: ['CMD', 'wget', '-q', '-O', '/dev/null', 'http://127.0.0.1:8080/']
+      interval: 3s
+      timeout: 2s
+      retries: 10

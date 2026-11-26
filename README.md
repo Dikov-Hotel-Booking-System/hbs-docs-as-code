@@ -1,14 +1,20 @@
-# 📚 Hbs-docs-service
+# 📚 Hbs-docs-as-code
 
 > Портал документации Hotel Booking System
 
+---
+
 ## 📌 Описание
 
-Docusaurus собирает `README.md` и Markdown из `docs/` ветки `master` четырёх сервисов. При каждой сборке он загружает актуальные материалы, отображает Mermaid-диаграммы и связывает страницы внутри портала. Ссылки на файлы исходного кода ведут к ревизии на GitHub, из которой взята документация.
+Документация хранится рядом с кодом сервисов и обновляется через запросы на слияние в их репозиториях. Docusaurus собирает `README.md` и Markdown из `docs/` ветки `master` четырёх сервисов в единый портал с навигацией и Mermaid-диаграммами. Ссылки на исходный код ведут к той же ревизии на GitHub, из которой взяты документы.
+
+---
 
 ## 📘 Документация по процессам
 
 - ### [GitHub Flow](docs/github_flow.md)
+
+---
 
 ## 🛠️ Стек технологий
 
@@ -16,31 +22,30 @@ Docusaurus собирает `README.md` и Markdown из `docs/` ветки `mas
 - Docusaurus и Mermaid
 - Nginx, Docker и GitHub Actions
 
-## 🚀 Локальный запуск
+---
 
-Из корня проекта выполнить команды.
+## 🚀 Локальный запуск на Windows
 
-```shell
-pnpm install --frozen-lockfile
-pnpm start
-```
+Понадобятся Docker Desktop и интернет. Node.js и pnpm устанавливаются внутри сборочного контейнера.
 
-Портал доступен на `http://localhost:8081`. Если сервисы уже клонированы, переменная `HBS_DOCS_SOURCE_DIR` может указывать на родительскую папку этих репозиториев. В этом случае сборка читает их локальные ветки `master`.
+1. Дважды щёлкнуть по `start-docs.cmd` в корне проекта. При первом запуске Docker скачает зависимости и соберёт сайт. Скрипт завершится, когда портал будет готов.
+2. Дважды щёлкнуть по `open-docs.cmd`. Портал откроется в браузере по адресу `http://localhost:8081`.
 
-## 📦 Сборка сайта и Docker-образа
+Из PowerShell те же файлы запускаются как `.\start-docs.cmd` и `.\open-docs.cmd`.
 
-```shell
-pnpm test
-pnpm build
-docker build --tag hbs-docs-service:local .
-docker run --rm --publish 8081:8080 hbs-docs-service:local
-```
+Чтобы остановить портал, выполнить `docker compose down` из корня проекта.
 
-Готовый сайт находится в `build/`. CI проверяет код, собирает сайт и Docker-образ.
+---
+
+## ⚙️ Сборка и проверки
+
+GitHub Actions прогоняет юнит-тесты, собирает сайт в `build/` и затем собирает Docker-образ из готового сайта. Локальный запуск загружает актуальный Markdown при сборке контейнера.
+
+---
 
 ## 🔗 Полезные ссылки
 
 | Ссылка | Примечание |
 |--------|------------|
-| [Репозиторий](https://github.com/Dikov-Hotel-Booking-System/hbs-docs-service) | Исходный код сервиса |
-| [GitHub Actions](https://github.com/Dikov-Hotel-Booking-System/hbs-docs-service/actions) | Запуски CI |
+| [Репозиторий](https://github.com/Dikov-Hotel-Booking-System/hbs-docs-as-code) | Исходный код сервиса |
+| [GitHub Actions](https://github.com/Dikov-Hotel-Booking-System/hbs-docs-as-code/actions) | Запуски CI |

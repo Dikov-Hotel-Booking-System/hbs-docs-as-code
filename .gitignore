@@ -2,5 +2,6 @@
 /.docusaurus/
 /.generated-docs/
 /.docs-sync-*/
+/.idea/
 /build/
 *.log

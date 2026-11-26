@@ -1,2 +1,5 @@
 allowBuilds:
   core-js: false
+networkConcurrency: 8
+fetchRetries: 4
+fetchTimeout: 90000

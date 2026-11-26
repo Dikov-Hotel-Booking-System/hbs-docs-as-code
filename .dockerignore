@@ -1,4 +1,14 @@
 **
+!Dockerfile
+!package.json
+!pnpm-lock.yaml
+!pnpm-workspace.yaml
+!docusaurus.config.mjs
+!projects.mjs
+!sidebars.mjs
+!scripts/
+!scripts/**
+!src/
+!src/**
 !build/
 !build/**
-!Dockerfile
